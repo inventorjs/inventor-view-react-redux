@@ -6,7 +6,7 @@
 
 import React from 'react'
 
-_getAssetLink({ link, publicHost='' }) {
+function _getAssetLink({ link, publicHost }={ publicHost: '' }) {
     return /^(https?:)|(\/\/)/.test(link) ? link : `${publicHost}${link}`
 }
 
@@ -14,7 +14,7 @@ export default function(props={}) {
     const {
         locals={},
         nodeEnv='',
-        appContent='',
+        appHTML='',
         initialState={},
         appPath='',
         appName='',
@@ -29,7 +29,7 @@ export default function(props={}) {
 
     const { jsList: vendorJsList=[], cssList: vendorCssList=[] } = require(`${vendorPath}/addon`)
     const { jsList: commonJsList=[], cssList: commonCssList=[] } = require(`${commonPath}/addon`)
-    const { jsList: appJsList=[], cssList: appCssList=[] } = require(`${appPath}/addon`)
+    const { jsList: appJsList=[], cssList: appCssList=[] } = require(`${appPath}/${appName}/addon`)
 
     let realJsList = vendorJsList.concat(commonJsList).concat(appJsList)
     let realCssList = vendorCssList.concat(commonCssList).concat(appCssList)
@@ -73,14 +73,14 @@ export default function(props={}) {
                         window.__INITIAL_STATE__ = ${initialStateJson}
                         window.__NODE_ENV__ = '${nodeEnv}'
                         window.__APP_NAME__ = '${appName}'
-                        widdow.__ROOT_DOM_ID__ = '${rootDomId}'
+                        window.__ROOT_DOM_ID__ = '${rootDomId}'
                         window.__CONSTANTS__ = ${contantsJson}
                     `
                 } }></script>
             </head>
             <body>
             <div id={ rootDomId } dangerouslySetInnerHTML={ {
-                __html: appContent
+                __html: appHTML
             } }></div>
             {
                 _.map(realJsList, (js, index) =>

@@ -8,14 +8,16 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router-dom'
 
-export default (props={}) => {
-    const { context={}, store, location, App } = props
+export default class Root extends Component {
+    render() {
+        const { context={}, store, location, App } = this.props
 
-    return (
-        <Provider store={ store }>
-            <StaticRouter location={ location } context={ context }>
-                <App />
-            </StaticRouter>
-        </Provider>
-    )
+        return (
+            <Provider store={ store }>
+                <StaticRouter location={ location } context={ context }>
+                    <App />
+                </StaticRouter>
+            </Provider>
+        )
+    }
 }
