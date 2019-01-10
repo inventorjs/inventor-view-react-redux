@@ -3,6 +3,8 @@
  *
  * @author: sunkeysun
  */
+import React from 'react'
+import ReactDom from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
@@ -17,7 +19,7 @@ const appEntryTpl = `
 
     const kernel = new Kernel({ appConfig, App, reducers })
     kernel.run(() => {
-        viewEngine.render({ App, reducers })
+        viewEngine().render({ App, reducers })
     })
 `
 
