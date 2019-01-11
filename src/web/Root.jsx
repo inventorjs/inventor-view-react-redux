@@ -14,7 +14,7 @@ export default class Root extends Component {
 
         return (
             <Provider store={ store }>
-                <ConnectedRouter history={ history }>
+                <ConnectedRouter store={ store } history={ history }>
                     <App />
                 </ConnectedRouter>
             </Provider>

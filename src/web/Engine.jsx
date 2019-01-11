@@ -19,8 +19,8 @@ export default class Engine {
         import reducers from '<-appPath->/redux'
         import appConfig from '<-webPath->/config/app'
 
-        const kernel = new Kernel({ appConfig, App, reducers })
-        const engine = ViewEngine()
+        const kernel = new Kernel({ appConfig })
+        const engine = new ViewEngine()
         kernel.run(() => {
             engine.render({ App, reducers })
         })
@@ -57,8 +57,8 @@ export default class Engine {
     }
 
     getAppEntry({ appPath, webPath }) {
-        const tplContent = appEntryTpl.replace(/<-appPath->/g, appPath)
-                                      .replace(/<-webPath->/g, webPath)
+        const tplContent = this._appEntryTpl.replace(/<-appPath->/g, appPath)
+                                            .replace(/<-webPath->/g, webPath)
         return tplContent
     }
 }
