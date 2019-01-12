@@ -7,7 +7,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { createStore, combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
+import { connectRouter } from 'connected-react-router'
 import createHistory from 'history/createBrowserHistory'
 import Root from './Root'
 
@@ -38,7 +38,7 @@ export default class Engine {
         const rootReducer = combineReducers({
             ...reducers,
             constants: (state=constants) => state,
-            routing: routerReducer,
+            routing: connectRouter(history),
         })
 
         const store = createStore(rootReducer, initialState)
@@ -56,7 +56,7 @@ export default class Engine {
         )
     }
 
-    getAppEntry({ appPath, webPath }) {
+    getEntryTpl({ appPath, webPath }) {
         const tplContent = this._appEntryTpl.replace(/<-appPath->/g, appPath)
                                             .replace(/<-webPath->/g, webPath)
         return tplContent

@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
+import { ConnectedRouter } from 'connected-react-router'
 
 export default class Root extends Component {
     render() {
@@ -14,7 +14,7 @@ export default class Root extends Component {
 
         return (
             <Provider store={ store }>
-                <ConnectedRouter store={ store } history={ history }>
+                <ConnectedRouter history={ history }>
                     <App />
                 </ConnectedRouter>
             </Provider>
