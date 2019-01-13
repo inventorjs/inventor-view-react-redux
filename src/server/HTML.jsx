@@ -45,7 +45,7 @@ export default function(props={}) {
         realCssList = localCssList
     }
 
-    if (!ignoreAssetHash) {
+    if (ignoreAssetHash) {
         realJsList = _.map(realJsList, (js) => js.replace(/(.*)\.\w{10,}\.js$/, '$1.js'))
         realCssList = _.map(realCssList, (css) => css.replace(/(.*)\.\w{10,}\.css$/, '$1.css'))
     }
