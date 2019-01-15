@@ -38,7 +38,7 @@ export default class Engine {
         const rootReducer = combineReducers({
             ...reducers,
             constants: (state=constants) => state,
-            routing: connectRouter(history),
+            router: connectRouter(history),
         })
 
         const store = createStore(rootReducer, initialState)
