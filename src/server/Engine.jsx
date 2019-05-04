@@ -71,7 +71,6 @@ export default class Engine {
         const rootReducer = combineReducers({
             ...reducers,
             constants: (state=constants) => state,
-            router: (state=routing) => state,
         })
 
         const store = createStore(rootReducer, initialState)
