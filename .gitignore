@@ -1,4 +1,5 @@
 build/
+.devpath
 # Logs
 logs
 *.log
