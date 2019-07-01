@@ -6,17 +6,17 @@
 
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
 
 export default class Root extends Component {
     render() {
-        const { store, App } = this.props
+        const { store, history, App } = this.props
 
         return (
             <Provider store={ store }>
-                <BrowserRouter>
+                <ConnectedRouter history={ history }>
                     <App />
-                </BrowserRouter>
+                </ConnectedRouter>
             </Provider>
         )
     }

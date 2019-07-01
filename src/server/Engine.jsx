@@ -62,7 +62,7 @@ export default class Engine {
 
         const urlObj = URL.parse(href)
 
-        const routing = {
+        const router = {
             location: _.toPlainObject(urlObj),
         }
 
@@ -71,6 +71,7 @@ export default class Engine {
         const rootReducer = combineReducers({
             ...reducers,
             constants: (state=constants) => state,
+            router: (state=router) => state,
         })
 
         const store = createStore(rootReducer, initialState)
