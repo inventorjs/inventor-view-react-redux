@@ -8,7 +8,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
-import createHistory from 'history/createBrowserHistory'
+import { createBrowserHistory } from 'history'
 import Root from './Root'
 
 export default class Engine {
@@ -32,7 +32,7 @@ export default class Engine {
         const appName = window.__APP_NAME__
         const rootDomId = window.__ROOT_DOM_ID__
         const constants = window.__CONSTANTS__
-        const history = createHistory()
+        const history = createBrowserHistory()
 
         const rootReducer = combineReducers({
             ...reducers,
