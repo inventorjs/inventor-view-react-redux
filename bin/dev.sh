@@ -12,7 +12,7 @@ if [ ! -f "$dev_file" ]; then
 fi
 
 echo "============================================"
-echo "package in on dev mode，don't forget recover you project dependencies by `npm install` "
+echo "package in on dev mode，don't forget recover you project dependencies by 'yarn install' "
 echo "============================================"
 
 dev_path=`cat ${dev_file}`
